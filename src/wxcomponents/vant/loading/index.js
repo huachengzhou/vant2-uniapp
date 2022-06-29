@@ -1,6 +1,7 @@
-import { VantComponent } from '../common/component';
-import { addUnit } from '../common/utils';
-VantComponent({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var component_1 = require("../common/component");
+component_1.VantComponent({
     props: {
         color: String,
         vertical: Boolean,
@@ -8,25 +9,10 @@ VantComponent({
             type: String,
             value: 'circular'
         },
-        size: {
-            type: String,
-            observer: 'setSizeWithUnit'
-        },
-        textSize: {
-            type: String,
-            observer: 'setTextSizeWithUnit'
-        }
+        size: String,
+        textSize: String
     },
-    methods: {
-        setSizeWithUnit(size) {
-            this.setData({
-                sizeWithUnit: addUnit(size)
-            });
-        },
-        setTextSizeWithUnit(size) {
-            this.set({
-                textSizeWithUnit: addUnit(size)
-            });
-        }
-    }
+    data: {
+        array12: Array.from({ length: 12 }),
+    },
 });

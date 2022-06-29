@@ -1,11 +1,10 @@
-export const button = Behavior({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.button = Behavior({
     externalClasses: ['hover-class'],
     properties: {
         id: String,
-        lang: {
-            type: String,
-            value: 'en'
-        },
+        lang: String,
         businessId: Number,
         sessionFrom: String,
         sendMessageTitle: String,

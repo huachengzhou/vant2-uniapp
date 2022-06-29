@@ -1,13 +1,11 @@
-import { VantComponent } from '../common/component';
-import { addUnit } from '../common/utils';
-VantComponent({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var component_1 = require("../common/component");
+component_1.VantComponent({
     props: {
         dot: Boolean,
         info: null,
-        size: {
-            type: null,
-            observer: 'setSizeWithUnit'
-        },
+        size: null,
         color: String,
         customStyle: String,
         classPrefix: {
@@ -16,24 +14,16 @@ VantComponent({
         },
         name: {
             type: String,
-            observer(val) {
+            observer: function (val) {
                 this.setData({
                     isImageName: val.indexOf('/') !== -1
                 });
             }
         }
     },
-    data: {
-        sizeWithUnit: null,
-    },
     methods: {
-        onClick() {
+        onClick: function () {
             this.$emit('click');
-        },
-        setSizeWithUnit(size) {
-            this.setData({
-                sizeWithUnit: addUnit(size)
-            });
         }
     }
 });

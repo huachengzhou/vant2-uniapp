@@ -1,5 +1,5 @@
 <template>
-  <div class="goods">
+  <view class="goods">
     <van-swipe class="goods-swipe" :autoplay="3000">
       <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
         <img :src="thumb" >
@@ -45,38 +45,39 @@
         立即购买
       </van-goods-action-button>
     </van-goods-action>
-  </div>
+  </view>
 </template>
 
 <script>
-import {
-  Tag,
-  Col,
-  Icon,
-  Cell,
-  CellGroup,
-  Swipe,
-  Toast,
-  SwipeItem,
-  GoodsAction,
-  GoodsActionIcon,
-  GoodsActionButton
-} from 'vant';
+
+  // import {
+  //   Tag,
+  //   Col,
+  //   Icon,
+  //   Cell,
+  //   CellGroup,
+  //   Swipe,
+  //   Toast,
+  //   SwipeItem,
+  //   GoodsAction,
+  //   GoodsActionIcon,
+  //   GoodsActionButton
+  // } from 'vant';
+
 
 export default {
   components: {
-    [Tag.name]: Tag,
-    [Col.name]: Col,
-    [Icon.name]: Icon,
-    [Cell.name]: Cell,
-    [CellGroup.name]: CellGroup,
-    [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem,
-    [GoodsAction.name]: GoodsAction,
-    [GoodsActionIcon.name]: GoodsActionIcon,
-    [GoodsActionButton.name]: GoodsActionButton
+    // [Tag.name]: Tag,
+    // [Col.name]: Col,
+    // [Icon.name]: Icon,
+    // [Cell.name]: Cell,
+    // [CellGroup.name]: CellGroup,
+    // [Swipe.name]: Swipe,
+    // [SwipeItem.name]: SwipeItem,
+    // [GoodsAction.name]: GoodsAction,
+    // [GoodsActionIcon.name]: GoodsActionIcon,
+    // [GoodsActionButton.name]: GoodsActionButton
   },
-
   data() {
     return {
       goods: {
@@ -91,21 +92,19 @@ export default {
       }
     };
   },
-
   methods: {
     formatPrice() {
       return '¥' + (this.goods.price / 100).toFixed(2);
     },
-
     onClickCart() {
       this.$router.push('cart');
     },
-
     sorry() {
       Toast('暂无后续逻辑~');
     }
   }
 };
+
 </script>
 
 <style lang="less">

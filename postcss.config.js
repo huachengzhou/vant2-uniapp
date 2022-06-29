@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 module.exports = {
   parser: require('postcss-comment'),
   plugins: [
@@ -19,4 +19,5 @@ module.exports = {
     }),
     require('@dcloudio/vue-cli-plugin-uni/packages/postcss')
   ]
-}
+};
+

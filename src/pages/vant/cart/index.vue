@@ -1,120 +1,58 @@
 <template>
-  <div>
-    <van-checkbox-group class="card-goods" v-model="checkedGoods">
-      <van-checkbox
-        class="card-goods__item"
-        v-for="item in goods"
-        :key="item.id"
-        :name="item.id"
-      >
-        <van-card
-          :title="item.title"
-          :desc="item.desc"
-          :num="item.num"
-          :price="formatPrice(item.price)"
-          :thumb="item.thumb"
-        />
-      </van-checkbox>
-    </van-checkbox-group>
-    <van-submit-bar
-      :price="totalPrice"
-      :disabled="!checkedGoods.length"
-      :button-text="submitBarText"
-      @submit="onSubmit"
-    />
-  </div>
+	<view class="container">
+
+
+
+		<demo-block title="基础用法">
+			<van-card num="2" price="2.00" desc="描述信息" title="2018秋冬新款男士休闲时尚军绿飞行夹克秋冬新款男" :thumb="imageURL" />
+		</demo-block>
+
+		<demo-block title="高级用法">
+			<van-card num="2" tag="标签" price="2.00" origin-price="10.00" desc="描述信息" title="2018秋冬新款男士休闲时尚军绿飞行夹克秋冬新款男"
+				:thumb="imageURL">
+				<view slot="tags">
+					<van-tag plain type="danger" custom-class="tag">标签1</van-tag>
+					<van-tag plain type="danger">标签2</van-tag>
+				</view>
+				<view slot="footer" class="van-card__footer">
+					<van-button size="mini" round custom-class="button">按钮</van-button>
+					<van-button size="mini" round>按钮</van-button>
+				</view>
+			</van-card>
+		</demo-block>
+	</view>
 </template>
 
 <script>
-import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from 'vant';
+	export default {
+		components: {
 
-export default {
-  components: {
-    [Card.name]: Card,
-    [Checkbox.name]: Checkbox,
-    [SubmitBar.name]: SubmitBar,
-    [CheckboxGroup.name]: CheckboxGroup
-  },
+		},
+		data() {
+			return {
+				imageURL: 'https://img.yzcdn.cn/upload_files/2017/07/02/af5b9f44deaeb68000d7e4a711160c53.jpg'
 
-  data() {
-    return {
-      checkedGoods: ['1', '2', '3'],
-      goods: [{
-        id: '1',
-        title: '进口香蕉',
-        desc: '约250g，2根',
-        price: 200,
-        num: 1,
-        thumb: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png'
-      }, {
-        id: '2',
-        title: '陕西蜜梨',
-        desc: '约600g',
-        price: 690,
-        num: 1,
-        thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/f6aabd6ac5521195e01e8e89ee9fc63f.jpeg'
-      }, {
-        id: '3',
-        title: '美国伽力果',
-        desc: '约680g/3个',
-        price: 2680,
-        num: 1,
-        thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/320454216bbe9e25c7651e1fa51b31fd.jpeg',
-		url:'https://tse1-mm.cn.bing.net/th/id/R-C.cc27586fa6abc858d216132bd5fa29e4?rik=NLSqcooTXyoLzg&riu=http%3a%2f%2fup.deskbizhi.com%2fpic%2fbd%2fa6%2f11%2fbda6116458672f44caac2212fdc01d79.jpg&ehk=7DAzW%2bGK3up9RAgovpQK2T1qDPU7wSNudUQanFkDZ0U%3d&risl=&pid=ImgRaw&r=0'
-      }]
-    };
-  },
+			}
+		},
+		onLoad() {},
+		methods: {
 
-  computed: {
-    submitBarText() {
-      const count = this.checkedGoods.length;
-      return '结算' + (count ? `(${count})` : '');
-    },
-
-    totalPrice() {
-      return this.goods.reduce((total, item) => total + (this.checkedGoods.indexOf(item.id) !== -1 ? item.price : 0), 0);
-    }
-  },
-
-  methods: {
-    formatPrice(price) {
-      return (price / 100).toFixed(2);
-    },
-
-    onSubmit() {
-      Toast('点击结算');
-    }
-  }
-};
+		}
+	}
 </script>
 
-<style lang="less">
-.card-goods {
-  padding: 10px 0;
-  background-color: #fff;
+<style>
+	.container {
+		height: 100px;
+		background-color: #fff;
+	}
 
-  &__item {
-    position: relative;
-    background-color: #fafafa;
+	.tag,
+	.button {
+		margin-right: 5px;
+	}
 
-    .van-checkbox__label {
-      width: 100%;
-      height: auto; // temp
-      padding: 0 10px 0 15px;
-      box-sizing: border-box;
-    }
-
-    .van-checkbox__icon {
-      top: 50%;
-      left: 10px;
-      z-index: 1;
-      position: absolute;
-      margin-top: -10px;
-    }
-
-    .van-card__price {
-      color: #f44;
-    }
-  }
-}
+	.van-card__footer {
+		margin-top: 5px;
+	}
 </style>
